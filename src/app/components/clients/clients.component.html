@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-md-6">
+    <hr>
+<h1><i class="fa fa-user-circle-o"></i> CLIENTS</h1>
+  </div>
+  <div class="col-md-6">
+    <hr>
+<h3 class="text-right text-black-50 align-text-bottom align-items-baseline  "> Total Balance: {{sum_balanced| currency}}</h3>
+  </div>
+</div>
+<table *ngIf="clients?.length >0; else nodata" class="table table-striped">
+<thead class="thead-dark">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Balance</th>
+<!-- <th>Priority</th> -->
+<th></th>
+
+</tr>
+
+</thead>
+<tbody>
+
+
+
+  <tr *ngFor ="let c of clients">
+    <td> {{c.firstName}} {{c.lastName}}</td>
+    <td> {{c.email}}</td>
+    <td> {{c.balance | currency}}</td>
+    <!-- <td> <i class="fa fa-level-up"></i> {{c.Priority}}</td> -->
+
+    <td > <a routerLink="client/{{ c.id }}"  class="btn btn-sm btn-success"> <i class="fa fa-arrow-circle-o-right"> </i> Details</a></td>
+  </tr>
+
+
+
+
+
+
+</tbody>
+</table>
+
+<ng-template #nodata>
+<hr>
+<hr>
+<h2 class="text-center text-secondary "> NO CLIENTS</h2>
+
+
+</ng-template>

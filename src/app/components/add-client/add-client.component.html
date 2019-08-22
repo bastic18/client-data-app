@@ -1,0 +1,175 @@
+<div class="row">
+  <!-- <h2> CREATE NEW CLIENT</h2> -->
+  <div class="col-md-6">
+
+<a routerLink="/" class="btn btn-link">
+<i class="fa fa-arrow-left"> HOME</i>
+</a>
+  </div>
+  <div class="col-md-6">
+
+
+  </div>
+</div>
+<div class="card">
+  <div class="card-header ">
+    <h3>CREATE NEW CLIENT</h3>
+  </div>
+  <div class="card-body">
+    <form #clientdataForm="ngForm" (ngSubmit)="submitdataForm(clientdataForm)">
+
+      <div class="form-group">
+        <label for="firstName"> First Name</label>
+        <input type="text"  class="form-control"
+        name="firstName"
+        #clientFirstName="ngModel"
+        [ngClass]="{'is-invalid': clientFirstName.errors && clientFirstName.touched}"
+        [(ngModel)]="client.firstName"
+        minlength="3"
+        required>
+
+<div [hidden]="!clientFirstName.errors?.required" class="invalid-feedback">
+
+First name required
+
+</div>
+
+<div [hidden]="!clientFirstName.errors?.minlength" class="invalid-feedback">
+
+  Must be 3 or more characters
+
+  </div>
+
+
+      </div>
+      <div class="form-group">
+        <label for="lastName"> Last Name</label>
+        <input type="text"  class="form-control"
+        name="lastName"
+        #clientLastName="ngModel"
+        [ngClass]="{'is-invalid': clientLastName.errors && clientLastName.touched}"
+        [(ngModel)]="client.lastName"
+        minlength="3"
+        required>
+
+<div [hidden]="!clientLastName.errors?.required" class="invalid-feedback">
+
+Last name required
+
+</div>
+
+<div [hidden]="!clientLastName.errors?.minlength" class="invalid-feedback">
+
+  Must be 3 or more characters
+
+  </div>
+
+
+      </div>
+
+
+      <div class="form-group">
+        <label for="email"> Email</label>
+        <input type="text"  class="form-control"
+        name="email"
+        #clientemail="ngModel"
+        [ngClass]="{'is-invalid': clientemail.errors && clientemail.touched}"
+        [(ngModel)]="client.email"
+        pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+        required>
+
+<div [hidden]="!clientemail.errors?.required" class="invalid-feedback">
+
+Email required
+
+</div>
+
+<div [hidden]="!clientemail.errors?.pattern" class="invalid-feedback">
+
+  Email is not valid
+  </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone"> Phone Number </label>
+        <input type="text"  class="form-control"
+        name="phone"
+        #clientphone="ngModel"
+        [ngClass]="{'is-invalid': clientphone.errors && clientphone.touched}"
+        [(ngModel)]="client.phone"
+        minlength="10"
+        required>
+
+<div [hidden]="!clientphone.errors?.required" class="invalid-feedback">
+
+Phone number required
+
+</div>
+
+<div [hidden]="!clientphone.errors?.minlength" class="invalid-feedback">
+
+  Phone number is not long enough
+  </div>
+      </div>
+      <div class="form-group">
+        <label for="Comment"> Comments </label>
+        <input type="text"  class="form-control"
+        name="Comment"
+        #clientComment="ngModel"
+        [ngClass]="{'is-invalid': clientComment.errors && clientComment.touched}"
+        [(ngModel)]="client.Comment"
+        >
+      </div>
+      <div class="form-group">
+        <label for="Log"> Log</label>
+        <input type="text"  class="form-control"
+        name="Log"
+        #clientLog="ngModel"
+        [ngClass]="{'is-invalid': clientLog.errors && clientLog.touched}"
+        [(ngModel)]="client.Log"
+        >
+      </div>
+      <div class="form-group">
+        <label for="recentEvents"> Recent Events </label>
+        <input type="text"  class="form-control"
+        name="recentEvents"
+        #clientrecEvent="ngModel"
+        [ngClass]="{'is-invalid': clientrecEvent.errors && clientrecEvent.touched}"
+        [(ngModel)]="client.recentEvents"
+        >
+      </div>
+      <div class="form-group">
+        <label for="upcomingEvents"> Upcoming Events </label>
+        <input type="text"  class="form-control"
+        name="upcomingEvents"
+        #clientupEvent="ngModel"
+        [ngClass]="{'is-invalid': clientupEvent.errors && clientupEvent.touched}"
+        [(ngModel)]="client.upcomingEvents"
+        >
+      </div>
+      <div class="form-group">
+          <label for="Priority"> Priority  </label>
+          <br>
+          <span>Low </span> <span class="pull-right"> High</span>
+          <input type="range"  class="form-control"   min="1" max="100"
+          name="Priority"
+          #clientpriority="ngModel"
+
+          [(ngModel)]="client.Priority"
+          >
+</div>
+
+<div class="form-group">
+  <label for="balance"> Balance</label>
+  <input type="number"  class="form-control"
+  name="balance"
+  #clientbalance="ngModel"
+  [ngClass]="{'is-invalid': clientbalance.errors && clientbalance.touched}"
+  [(ngModel)]="client.balance"
+  [disabled]="balanced_disabled"
+  >
+</div>
+<input type="submit" value="ADD NEW CLIENT" class="btn btn-block btn-outline-success">
+    </form>
+  </div>
+</div>

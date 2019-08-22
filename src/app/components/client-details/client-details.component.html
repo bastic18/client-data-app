@@ -1,0 +1,92 @@
+<div class="row">
+<div class="col-md-6">
+<a routerLink="/" class="btn btn-link"> <h4> <i class="fa fa-arrow-circle-o-right"></i> Back To Home</h4>
+</a>
+</div>
+<div class="col-md-6">
+<div class="btn-group pull-right">
+  <a routerLink="/client/edit/{{id}}" class="btn btn-dark"> <i class="fa fa-pencil-square"></i> EDIT</a>
+
+
+  <button (click)="deleteinfo()" class= "btn btn-outline-primary"> <i class="fa fa-eraser"></i> DELETE</button>
+</div>
+</div>
+
+</div>
+<hr>
+<hr>
+<div *ngIf="client" class="card">
+
+<h2 class="card-header">  <i class="fa fa-user"></i> {{client.firstName}}  {{client.lastName}}</h2>
+<div class="card-body">
+<div class="row">
+
+  <div class="col-md-8 col-sm-6">
+<h3>CLIENT ID: {{client.id}}</h3>
+  </div>
+  <div class="col-md-8 col-sm-6">
+<h3 class="text-danger">BALANCE:
+<span
+[class.text-danger]="balancequery"
+[class.text-success]="!balancequery"
+
+>
+{{client.balance | currency}}
+
+</span>
+<small>
+  <a (click)="balanceupdate=!balanceupdate"> <i class="fa fa-cc-"></i></a>
+</small>
+
+</h3>
+<div class="clearfix">
+  <form *ngIf="balanceupdate" (submit)="updatebalance()">
+    <div class="input-group">
+      <input type="text" name="balance" class="form-control" [(ngModel)]="client.balance">
+      <span class="input-group-btn">
+        <button type= "submit" class="btn btn-primary" > Update</button>
+      </span>
+    </div>
+  </form>
+</div>
+    </div>
+
+</div>
+<hr>
+<ul class="list-group">
+  <h5>
+  <li class="list-group-item">
+      <i class="fa fa-envelope-open"></i>
+    EMAIL:   {{client.email}}
+  </li>
+  <li class="list-group-item">
+      <i class="fa fa-phone"></i>
+      PHONE: {{client.phone}}
+    </li>
+    <li class="list-group-item">
+        <i class="fa fa-comments-o"></i>
+
+      COMMENT: {{client.Comment}}
+    </li>
+    <li class="list-group-item">
+        <i class="fa fa-book"></i>
+      LOG: {{client.Log}}
+    </li>
+    <li class="list-group-item">
+        <i class="fa fa-file-text-o"></i>
+      RECENT EVENT: {{client.recentEvents}}
+    </li>
+    <li class="list-group-item">
+        <i class="fa fa-file-text"></i>
+      UPCOMING EVENT: {{client.upcomingEvents}}
+    </li>
+
+    <li class="list-group-item">
+        <i class="fa fa-level-up"></i>
+      PRIORITY: {{client.Priority}}
+    </li>
+  </h5>
+</ul>
+
+</div>
+</div>
